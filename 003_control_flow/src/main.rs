@@ -66,9 +66,19 @@ fn main() {
     }*/
 
     //for loop - certain number of iterations
-    {
+    /*{
         for number in (5..10).rev() {
             println!("Number: {}", number);
+        }
+        println!("End.");
+    }*/
+
+    //while loop
+    {
+        let mut limit = 10;
+        while limit > 0 {
+            println!("I am working.");
+            limit = limit - 1;
         }
         println!("End.");
     }
