@@ -43,7 +43,7 @@ fn main() {
     }*/
 
     // using if to initialize variable - all "arms" must have same return type!
-    {
+    /*{
         let condition = false;
         let x = if condition {
                     5
@@ -51,6 +51,26 @@ fn main() {
                     "six"
                 };
         println!("Value of x is: {}", x);
+    }*/
+
+    //loops
+    //for loop - iterate over collection
+    /*{
+        let array = [1,2,3,4,5];
+        let mut sum = 0;
+        for number in array.iter() {
+            println!("Number to add: {}", number);
+            sum = sum + number;
+        }
+        println!("Sum of numbers in array is: {}", sum);
+    }*/
+
+    //for loop - certain number of iterations
+    {
+        for number in (5..10).rev() {
+            println!("Number: {}", number);
+        }
+        println!("End.");
     }
 }
 
