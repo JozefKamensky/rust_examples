@@ -1,4 +1,4 @@
-// exaples of simple structures and concepts connected to them
+// exaples of simple structures and concepts associated with them
 
 // annotation #[derive(Debug)] which allow us to print structure to output
 #[derive(Debug)]
@@ -6,6 +6,29 @@ struct Rectangle {
     width: u32,
     height: u32,
     diagonal: u32,
+}
+
+impl Rectangle{
+    // methods associated with Rectangle struct - they all use instance of
+    // structure to work with, via self keyword
+
+    // immutable reference - just reading
+    fn area(&self) -> u32 {
+        self.height * self.width
+    }
+
+    // mutable reference - reassig values
+    fn scale(&mut self, factor: f64) {
+        self.width = (self.width as f64 * factor) as u32;
+        self.height = (self.height as f64 * factor) as u32;
+        self.diagonal = (self.diagonal as f64 * factor) as u32;
+    }
+
+    // associated functions - they dont work with instance of structure
+    // we can make one to create square easily
+    fn square(edge: u32) -> Rectangle {
+        Rectangle { width: edge, height: edge, diagonal: ((2*edge*edge) as f64).sqrt() as u32 }
+    }
 }
 
 #[derive(Debug)]
@@ -52,11 +75,19 @@ fn main() {
     println!("p1: {:?}\np2: {:?}\np4: {:?}", p1, p2, p4);
 
     // create instance of Rectangle via function
-    let rect1 = build_rectangle(40,30);
+    let mut rect1 = build_rectangle(40,30);
     println!("{:#?}", rect1);
 
     let green = RgbColor(0,255,0);
     println!("---green color---\nR: {}\nG: {}\nB: {}", green.0, green.1, green.2);
+
+    // call method of structure
+    println!("Area of rectangle {:?} is: {}", rect1, rect1.area());
+    rect1.scale(0.5);
+    println!("Rectangle scaled by 0.5: {:?}", rect1);
+
+    let square = Rectangle::square(5);
+    println!("{:?}", square);
 }
 
 fn build_rectangle(width: u32, height: u32) -> Rectangle {
